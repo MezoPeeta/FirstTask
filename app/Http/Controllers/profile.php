@@ -35,19 +35,17 @@ class profile extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
         ]);
 
         $user = new User();
-        $user->name = $request->input('name');
 
-        $user->email = $request->input('email');
+        $user->name = $request->name;
 
-        $user->password = $request->input('password');
+        $user->email = $request->email;
 
         $user->save();
 
-        return redirect('/')->with('success', 'User Created');
+        return redirect('/');
     }
 
     /**
@@ -89,19 +87,17 @@ class profile extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
         ]);
 
         $user = User::findOrFail($id);
-        $user->name = $request->input('name');
 
-        $user->email = $request->input('email');
+        $user->name = $request->name;
 
-        $user->password = $request->input('password');
+        $user->email = $request->email;
 
         $user->save();
 
-        return redirect('/')->with('success', 'User Updated');
+        return redirect('/');
     }
 
     /**

@@ -9,8 +9,8 @@
         </div>
         <div class="form-group">
             {{Form::label('email', 'Email')}}
-            {{Form::text('email', $user->email, ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Email'])}}
-            
+            {{Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email'])}}
+
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Edit', ['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}
