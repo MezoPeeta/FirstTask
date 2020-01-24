@@ -43,9 +43,9 @@ class profile extends Controller
      */
     public function show($id)
     {
+        $user = User::findOrFail($id);
 
-
-        return view('profile', ['user' => User::findOrFail($id)]);
+        return view('profile')->with('user',$user);
     }
 
     /**
