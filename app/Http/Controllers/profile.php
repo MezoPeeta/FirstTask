@@ -69,7 +69,7 @@ class profile extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
 
         return view('edit')->with('user',$user);
 
@@ -108,6 +108,10 @@ class profile extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return redirect('/');
     }
 }
