@@ -32,7 +32,22 @@ class profile extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = new User();
+        $user->name = $request->input('name');
+
+        $user->email = $request->input('email');
+
+        $user->password = $request->input('password');
+
+        $user->save();
+
+        return redirect('/')->with('success', 'User Created');
     }
 
     /**
@@ -56,7 +71,10 @@ class profile extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        return view('edit')->with('user',$user);
+
     }
 
     /**
@@ -68,7 +86,22 @@ class profile extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->input('name');
+
+        $user->email = $request->input('email');
+
+        $user->password = $request->input('password');
+
+        $user->save();
+
+        return redirect('/')->with('success', 'User Created');
     }
 
     /**
