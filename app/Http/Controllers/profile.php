@@ -101,7 +101,7 @@ class profile extends Controller
 
         $user->save();
 
-        return redirect('/')->with('success', 'User Created');
+        return redirect('/')->with('success', 'User Updated');
     }
 
     /**
