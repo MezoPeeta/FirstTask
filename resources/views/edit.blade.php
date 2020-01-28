@@ -2,7 +2,8 @@
 
 @section('content')
 <h1>Edit Profile</h1>
-    {!! Form::open(['action' => ['profile@update', $user->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::open(['action' => ['profile@update', $user->id], 'method' => 'POST']) !!}
+    
         <div class="form-group">
             {{Form::label('name', 'Name')}}
             {{Form::text('name', $user->name, ['class' => 'form-control', 'placeholder' => 'Name'])}}
@@ -11,15 +12,21 @@
             {{Form::label('email', 'Email')}}
             {{Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email'])}}
         </div>
-        <div class="form-group">
-            {{Form::label('id', 'id')}}
-            {{Form::integar('id', $user->id, ['class' => 'form-control', 'placeholder' => 'ID'])}}
-        </div>
-        <div class="form-group">
-            {{Form::label('id', 'id')}}
-            {{Form::integar('id', $user->country, ['class' => 'form-control', 'placeholder' => 'ID'])}}
-        </div>
+        <div class="form-control">
+        <label for="usertype">UserType: </label> <br>
+        <select name="usertype" id=""> 
+            <option value="0">None</option>
+            @foreach ($users as $user)
+            <option value="{{ $user->id }}">{{ $user->name }}</option> 
+                 
+            @endforeach
+            <input type="submit" value="submit"> 
+    
+        </select>
+    </div>
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Edit', ['class'=>'btn btn-primary'])}}
+        
     {!! Form::close() !!}
+    
 @endsection

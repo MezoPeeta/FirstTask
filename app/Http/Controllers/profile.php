@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+use App\usertype;
+
 class profile extends Controller
 {
     /**
@@ -70,9 +72,11 @@ class profile extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('edit')->with('user',$user);
+        $user = User::findOrFail($id);
+        $usertypes = usertype::all();
+        
+        return view('edit')->with(['user'=> $user , 
+        'usertypes' => $usertypes]);
 
     }
 
@@ -88,7 +92,6 @@ class profile extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'country' => 'required',
         ]);
 
         $user = new User();

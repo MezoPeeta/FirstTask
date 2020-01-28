@@ -39,15 +39,19 @@ class UserTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $usertype = new usertype();
+        $request->validate([
+             'name' => ['required', 'string'],
+             'parent' => ['required', 'integer']
+         ]);
+         $usertype = new usertype();
         
-        $usertype->name = $request->input('UserName');
+         $usertype->name = $request->name;
 
-        $usertype->parent_id = 0;
+         $usertype->parent_id = $request->parent;
 
-        $usertype->save();
+         $usertype->save();
 
-        return redirect()->back()->withSuccess('Congratulations!'); 
+         return redirect()->back()->withSuccess('Congratulations!'); 
     }
 
     /**

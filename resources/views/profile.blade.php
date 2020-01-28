@@ -6,6 +6,8 @@
 <h1>{{$user->name}} ({{$user->id}})</h1>
 <br>
 <h2>Email: <br> {{$user->email}}</h5>
+<hr>
+<h3> UserType: <br>{{ $user->usertype->name ?? "None" }}</h3>
 </div>
 <hr>
 <h5> Created At: <br> <small>{{$user->created_at}}</small></h5>

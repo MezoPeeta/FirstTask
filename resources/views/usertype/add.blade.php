@@ -5,22 +5,18 @@
 
     <label for="add">Add UserType:</label> <br>
 
-    <input type="text" name="UserName" id=""> <br>
+    <input type="text" name="name" id=""> <br>
 
     <label for="Parent">Parent: </label> <br>
-    <input type="text" name="" id=""> <br>
-    <input type="submit" value="submit"> <br> <br>
     
-    <select name="usertypes" id="">
-        @forelse ($users as $user)
+    <select name="parent" id=""> 
+        <option value="0">None</option>
+        @foreach ($users as $user)
+        <option value="{{ $user->id }}">{{ $user->name }}</option> 
+             
+        @endforeach
+        <input type="submit" value="submit"> 
 
-        <option value="{{ $user->id }}">{{ $user->name }}</option>
- 
-        @empty
-        <label for="">No UserTypes Added Yet..</label>
-            
-        @endforelse
-    
     </select>
     @csrf
 
