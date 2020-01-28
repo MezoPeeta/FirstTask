@@ -89,16 +89,18 @@ class profile extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
         ]);
 
-        $user = new User();
+        $user = User::FindOrFail($id);
 
         $user->name = $request->name;
 
         $user->email = $request->email;
+
+        $user->usertype_id = $request->usertype;
 
         $user->save();
 

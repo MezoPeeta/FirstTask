@@ -12,18 +12,18 @@
             {{Form::label('email', 'Email')}}
             {{Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email'])}}
         </div>
-        <div class="form-control">
+        <div class="form-group">
         <label for="usertype">UserType: </label> <br>
-        <select name="usertype" id=""> 
+
+        <select name="usertype" id="" class="form-control"> 
             <option value="0">None</option>
-            @foreach ($users as $user)
-            <option value="{{ $user->id }}">{{ $user->name }}</option> 
+            @foreach ($usertypes as $usertype)
+            <option value="{{ $usertype->id }}">{{ $usertype->name }}</option> 
                  
-            @endforeach
-            <input type="submit" value="submit"> 
-    
+            @endforeach    
         </select>
     </div>
+    <br>
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Edit', ['class'=>'btn btn-primary'])}}
         

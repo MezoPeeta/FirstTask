@@ -40,6 +40,9 @@
                         <li class="nav-item">
                         <a class="nav-link" href="/customers">Customers</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/usertype/create">Create UserType</a>
+                            </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -78,7 +81,7 @@
             </div>
         </nav>
         <div>
-        <main class="py-4" style="position:relative; left:100px;">
+        <main class="py-4" style="position:relative; left:10px;">
             @yield('content')
         </main>
     </div>
