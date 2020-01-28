@@ -6,14 +6,20 @@ use Illuminate\Http\Request;
 
 use App\User;
 
-class profile extends Controller
+use App\usertype;
+
+class UserTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-   
+    public function index()
+    {
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -21,7 +27,8 @@ class profile extends Controller
      */
     public function create()
     {
-        //
+        $users = usertype::all();
+        return view('usertype.add')->with('users', $users);
     }
 
     /**
@@ -32,21 +39,15 @@ class profile extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'country' => 'required',
-        ]);
+        $usertype = new usertype();
+        
+        $usertype->name = $request->input('UserName');
 
-        $user = new User();
+        $usertype->parent_id = 0;
 
-        $user->name = $request->name;
+        $usertype->save();
 
-        $user->email = $request->email;
-
-        $user->save();
-
-        return redirect('/');
+        return redirect()->back()->withSuccess('Congratulations!'); 
     }
 
     /**
@@ -59,7 +60,7 @@ class profile extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('profile')->with('user',$user);
+        return view('usertype')->with('user',$user);
     }
 
     /**
@@ -70,10 +71,7 @@ class profile extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('edit')->with('user',$user);
-
+        //
     }
 
     /**
@@ -85,21 +83,7 @@ class profile extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'country' => 'required',
-        ]);
-
-        $user = new User();
-
-        $user->name = $request->name;
-
-        $user->email = $request->email;
-
-        $user->save();
-
-        return redirect('/');
+        //
     }
 
     /**
@@ -110,10 +94,6 @@ class profile extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-
-        $user->delete();
-
-        return redirect('/');
+        //
     }
 }

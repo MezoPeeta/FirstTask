@@ -77,10 +77,12 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+        <div>
+        <main class="py-4" style="position:relative; left:100px;">
             @yield('content')
         </main>
     </div>
+</div>
+
 </body>
 </html>

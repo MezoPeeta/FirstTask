@@ -23,3 +23,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource ('profile', 'profile');
+
+Route::resource ('usertype', 'UserTypeController');
+

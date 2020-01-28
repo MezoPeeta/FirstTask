@@ -10,8 +10,15 @@
         <div class="form-group">
             {{Form::label('email', 'Email')}}
             {{Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email'])}}
-            <br>
-
+        </div>
+        <div class="form-group">
+            {{Form::label('id', 'id')}}
+            {{Form::integar('id', $user->id, ['class' => 'form-control', 'placeholder' => 'ID'])}}
+        </div>
+        <div class="form-group">
+            {{Form::label('id', 'id')}}
+            {{Form::integar('id', $user->country, ['class' => 'form-control', 'placeholder' => 'ID'])}}
+        </div>
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Edit', ['class'=>'btn btn-primary'])}}
     {!! Form::close() !!}

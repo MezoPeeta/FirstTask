@@ -3,12 +3,13 @@
 @section('content')
 
 <div>
-<h1>{{$user->name}}</h1>
+<h1>{{$user->name}} ({{$user->id}})</h1>
 <br>
-<h5>{{$user->email}}</h5>
+<h2>Email: <br> {{$user->email}}</h5>
 </div>
 <hr>
-<small> Created at {{$user->created_at}}</small>
+<h5> Created At: <br> <small>{{$user->created_at}}</small></h5>
+<h5> Updated At: <br> <small>{{$user->updated_at}}</small></h5>
 <hr>
 <a href="/profile/{{$user->id}}/edit" class="btn btn-primary">Edit</a>
 
